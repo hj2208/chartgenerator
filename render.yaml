@@ -1,7 +1,12 @@
 services:
   - type: web
-    name: charthero-api
-    env: python
+    name: charthero-backend
+    runtime: python
+    region: oregon
     plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.13
+    autoDeploy: true
